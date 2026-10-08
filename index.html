@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartoon Studio AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>🎬 Cartoon Studio AI</h1>
+    <span>Create your own cartoon series</span>
+  </div>
+
+  <button id="newProject">＋ New Project</button>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <button class="nav active" data-page="dashboard">🏠 Dashboard</button>
+    <button class="nav" data-page="image">🎨 Image AI</button>
+    <button class="nav" data-page="video">🎥 Video AI</button>
+    <button class="nav" data-page="characters">👤 Characters</button>
+    <button class="nav" data-page="scenes">🎬 Scenes</button>
+    <button class="nav" data-page="episodes">📺 Episodes</button>
+    <button class="nav" data-page="gallery">🖼️ Gallery</button>
+
+  </aside>
+
+  <main class="content">
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard" class="page active">
+
+      <h2>Welcome to Cartoon Studio 🎬</h2>
+
+      <p class="muted">
+        Create characters, images, videos, scenes and complete episodes.
+      </p>
+
+      <div class="dashboardGrid">
+
+        <button class="feature" data-open="image">
+          <b>🎨</b>
+          <strong>AI Images</strong>
+          <span>Create cartoon images from prompts.</span>
+        </button>
+
+        <button class="feature" data-open="video">
+          <b>🎥</b>
+          <strong>AI Videos</strong>
+          <span>Create animated video scenes.</span>
+        </button>
+
+        <button class="feature" data-open="characters">
+          <b>👤</b>
+          <strong>Characters</strong>
+          <span>Build your cartoon cast.</span>
+        </button>
+
+        <button class="feature" data-open="scenes">
+          <b>🎬</b>
+          <strong>Scenes</strong>
+          <span>Create scenes and dialogue.</span>
+        </button>
+
+        <button class="feature" data-open="episodes">
+          <b>📺</b>
+          <strong>Episodes</strong>
+          <span>Build complete episodes.</span>
+        </button>
+
+        <button class="feature" data-open="gallery">
+          <b>🖼️</b>
+          <strong>Gallery</strong>
+          <span>View your generated media.</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- IMAGE AI -->
+
+    <section id="image" class="page">
+
+      <div class="pageHead">
+        <div>
+          <h2>🎨 AI Image Generator</h2>
+          <p>Describe the cartoon image you want.</p>
+        </div>
+      </div>
+
+      <div class="generator">
+
+        <label>Prompt</label>
+
+        <textarea
+          id="imagePrompt"
+          placeholder="Example: Five Zimbabwean cartoon friends standing outside a busy tuckshop, funny expressions, colorful 3D animation style"
+        ></textarea>
+
+        <div class="row">
+
+          <div>
+            <label>Style</label>
+
+            <select id="imageStyle">
+
+              <option>3D Cartoon</option>
+              <option>2D Cartoon</option>
+              <option>Anime</option>
+              <option>Comic Book</option>
+              <option>Pixar-like 3D</option>
+
+            </select>
+          </div>
+
+          <div>
+            <label>Aspect Ratio</label>
+
+            <select id="imageRatio">
+
+              <option value="1:1">Square</option>
+              <option value="16:9">Landscape</option>
+              <option value="9:16">Portrait</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <button id="generateImage" class="generate">
+          ✨ Generate Image
+        </button>
+
+        <div id="imageResult" class="result"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VIDEO AI -->
+
+    <section id="video" class="page">
+
+      <div class="pageHead">
+
+        <div>
+          <h2>🎥 AI Video Generator</h2>
+          <p>Create animated scenes from a description.</p>
+        </div>
+
+      </div>
+
+      <div class="generator">
+
+        <label>Video Prompt</label>
+
+        <textarea
+          id="videoPrompt"
+          placeholder="Example: A funny cartoon boy runs through a busy street, stops and looks behind him, then starts laughing"
+        ></textarea>
+
+        <div class="row">
+
+          <div>
+
+            <label>Duration</label>
+
+            <select id="videoDuration">
+
+              <option value="4">4 seconds</option>
+              <option value="6">6 seconds</option>
+              <option value="8">8 seconds</option>
+
+            </select>
+
+          </div>
+
+          <div>
+
+            <label>Style</label>
+
+            <select id="videoStyle">
+
+              <option>3D Cartoon</option>
+              <option>2D Cartoon</option>
+              <option>Anime</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <button id="generateVideo" class="generate">
+          🎥 Generate Video
+        </button>
+
+        <div id="videoResult" class="result"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHARACTERS -->
+
+    <section id="characters" class="page">
+
+      <div class="pageHead">
+
+        <div>
+          <h2>👤 Characters</h2>
+          <p>Create your cartoon cast.</p>
+        </div>
+
+        <button id="addCharacter">
+          ＋ Add Character
+        </button>
+
+      </div>
+
+      <div id="characterGrid" class="grid"></div>
+
+    </section>
+
+
+    <!-- SCENES -->
+
+    <section id="scenes" class="page">
+
+      <div class="pageHead">
+
+        <div>
+          <h2>🎬 Scenes</h2>
+          <p>Build your cartoon scenes.</p>
+        </div>
+
+        <button id="addScene">
+          ＋ Add Scene
+        </button>
+
+      </div>
+
+      <div id="sceneList"></div>
+
+    </section>
+
+
+    <!-- EPISODES -->
+
+    <section id="episodes" class="page">
+
+      <div class="pageHead">
+
+        <div>
+          <h2>📺 Episodes</h2>
+          <p>Combine scenes into episodes.</p>
+        </div>
+
+        <button id="addEpisode">
+          ＋ Add Episode
+        </button>
+
+      </div>
+
+      <div id="episodeList"></div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section id="gallery" class="page">
+
+      <div class="pageHead">
+
+        <div>
+          <h2>🖼️ Gallery</h2>
+          <p>Your saved AI creations.</p>
+        </div>
+
+      </div>
+
+      <div id="galleryGrid" class="gallery"></div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal hidden">
+
+  <div class="modalBox">
+
+    <button id="closeModal" class="close">×</button>
+
+    <h2 id="modalTitle"></h2>
+
+    <form id="form"></form>
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+           </html>
